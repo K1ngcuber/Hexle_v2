@@ -1,0 +1,26 @@
+@import "../variables.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $primary-color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: baseline;
+
+  /* Position the header at the top of the page */
+  position: sticky;
+  top: 0;
+
+  .main_title {
+    color: white;
+    font-size: 2rem;
+  }
+
+  .sub_title {
+    color: white;
+    font-size: 1.5rem;
+  }
+}
