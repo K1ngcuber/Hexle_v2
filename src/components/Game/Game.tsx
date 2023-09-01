@@ -1,7 +1,7 @@
 import { createEffect, createSignal } from "solid-js";
 import styles from "./Game.module.scss";
 import { amountOfGuesses } from "../../constants";
-import { Result, checkMatches } from "../../utils";
+import { Result, checkInput } from "../../utils";
 import WinAnimation from "../WinAnimation/WinAnimation";
 
 interface InputRef {
@@ -127,7 +127,7 @@ export default function Game() {
 
   const startAnimation = async (row: number): Promise<void> => {
     return new Promise<void>((resolve) => {
-      const currentMatches = checkMatches(currentColor());
+      const currentMatches = checkInput(currentColor());
       setMatches((prevMatches) => [...prevMatches, currentMatches]);
       setAnimation(true);
 

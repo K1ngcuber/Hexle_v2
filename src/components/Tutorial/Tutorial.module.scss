@@ -1,0 +1,101 @@
+@import "../variables.scss";
+
+.tutorial {
+  position: absolute;
+  top: 6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  width: 40rem;
+  padding: 2rem;
+  padding-top: 0;
+
+  /* From https://css.glass */
+  /* From https://css.glass */
+  background: $secondary-color-rgba;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(153, 98, 98, 0.3);
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      color: white;
+      padding: 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .step {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+
+      h2 {
+        font-size: 2rem;
+        padding: 0;
+        margin: 0;
+      }
+
+      p {
+        text-align: justify;
+      }
+    }
+
+    .main_buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+
+      .button {
+        height: 100%;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        border: none;
+        background: $primary-color;
+        color: white;
+        font-weight: 500;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background: $primary-color-rgba;
+        }
+      }
+    }
+  }
+}
+
+//media query for mobile
+@media (max-width: 400px) {
+  .tutorial {
+    width: 20rem;
+  }
+}
+
+//media query for tablet
+@media (min-width: 400px) and (max-width: 900px) {
+  .tutorial {
+    width: 20rem;
+  }
+}

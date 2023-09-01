@@ -57,3 +57,46 @@ export const checkMatches = (guessColor: string): Result[] => {
 
   return results;
 };
+
+export const checkInput = (input: string): Result[] => {
+  //without the hastag
+  input = input.toUpperCase();
+  const colorCode = getColorOfTheDay().toUpperCase().slice(1);
+  const tryResult = [] as Result[];
+
+  //create a list of 6 tryresults
+  for (let i = 0; i < 6; i++) {
+    tryResult.push({
+      index: i,
+      type: "wrong",
+    });
+  }
+
+  //check how often each letter appears in the color code
+  const colorCodeLetterCount = {} as Record<string, number>;
+  for (const letter of colorCode) {
+    if (colorCodeLetterCount[letter]) {
+      colorCodeLetterCount[letter]++;
+    } else {
+      colorCodeLetterCount[letter] = 1;
+    }
+  }
+
+  //check for matching letters
+  for (let i = 0; i < 6; i++) {
+    if (input[i] === colorCode[i]) {
+      tryResult[i].type = "correct";
+      colorCodeLetterCount[colorCode[i]]--;
+    }
+  }
+
+  //check for close matches
+  for (let i = 0; i < 6; i++) {
+    if (colorCodeLetterCount[input[i]] && tryResult[i].type === "wrong") {
+      tryResult[i].type = "included";
+      colorCodeLetterCount[input[i]]--;
+    }
+  }
+
+  return tryResult;
+};

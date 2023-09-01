@@ -1,8 +1,14 @@
 import styles from "./Footer.module.scss";
 
-export default function Footer() {
+export default function Footer(props: any) {
   return (
     <footer class={styles.footer}>
+      <p
+        onClick={props.showTutorial}
+        class={styles.footer_text + " " + styles.hover}
+      >
+        How to play
+      </p>
       <p class={styles.footer_text}>
         Made with <span class={styles.heart}>❤️</span> by{" "}
         <a href="https://github.com/K1ngcuber">Otterman 🦦</a>

@@ -1,1 +1,1 @@
-export const amountOfGuesses = 6;
+export const amountOfGuesses = 7;

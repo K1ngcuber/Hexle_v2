@@ -120,7 +120,11 @@ export default function WinAnimation() {
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
 
-    setCountDown(`${hours}:${minutes}:${seconds}`);
+    setCountDown(
+      `${hours}:${minutes < 10 ? "0" + minutes : minutes}:${
+        seconds < 10 ? "0" + seconds : seconds
+      }`
+    );
   };
 
   const getFontColorForBackground = (backgroundColor: string) => {
