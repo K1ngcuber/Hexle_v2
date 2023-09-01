@@ -178,7 +178,7 @@ export default function Game() {
 
   return (
     <div class={styles.game}>
-      {won() || (lost() && <WinAnimation won={won()} />)}
+      {(won() || lost()) && <WinAnimation won={won()} />}
       {!won() &&
         !lost() &&
         Array.from({ length: amountOfGuesses }, (_, row) => (
