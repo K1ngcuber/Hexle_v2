@@ -1,0 +1,67 @@
+@import "../variables.scss";
+
+.particle {
+  opacity: 0;
+  position: absolute;
+}
+
+.winHeader {
+  padding: 1rem;
+
+  h1 {
+    font-size: 4rem;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .colorCode {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .colorCode:hover {
+    cursor: pointer;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  animation-delay: 0.5s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-name: fadeOut;
+  animation-timing-function: ease-in-out;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -0.5rem;
+    border-width: 0.5rem;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

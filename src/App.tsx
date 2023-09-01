@@ -10,17 +10,21 @@ import Game from "./components/Game/Game";
 const App: Component = () => {
   const [color, setColor] = createSignal<string>(getColorOfTheDay());
 
-  createEffect(() => {}, []);
+  createEffect(() => {
+    //set body background color
+    document.body.style.backgroundColor = color();
+
+    const savedColor = localStorage.getItem("color");
+    if (savedColor !== color()) {
+      //invalidate local storage
+      localStorage.clear();
+    }
+  }, []);
 
   return (
     <div class={styles.App}>
       <Header />
-      <main
-        class={styles.main}
-        style={{
-          "background-color": color(),
-        }}
-      >
+      <main class={styles.main}>
         <Game />
       </main>
       <Footer />

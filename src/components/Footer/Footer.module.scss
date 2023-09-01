@@ -2,7 +2,8 @@
 
 .footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 2rem;
   align-items: center;
   justify-content: center;
   /* Full height but account for footer */
@@ -15,6 +16,6 @@
   text-align: center;
 
   /* Position the footer at the bottom of the page */
-  position: sticky;
+  position: absolute;
   bottom: 0;
 }
