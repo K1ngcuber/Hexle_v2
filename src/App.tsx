@@ -9,7 +9,7 @@ import Game from "./components/Game/Game";
 import Tutorial from "./components/Tutorial/Tutorial";
 
 const App: Component = () => {
-  const [color, setColor] = createSignal<string>(getColorOfTheDay());
+  const [color, _setColor] = createSignal<string>(getColorOfTheDay());
   const [showTutorial, setShowTutorial] = createSignal<boolean>(true);
 
   createEffect(() => {
