@@ -85,12 +85,14 @@ const animate = (x: number, y: number, particle: HTMLElement, size: number) => {
   };
 };
 
-export default function WinAnimation() {
+export default function WinAnimation(props: any) {
   const [color, setColor] = createSignal<string>(getColorOfTheDay());
   const [countDown, setCountDown] = createSignal<string>("");
 
   createEffect(() => {
-    startParticles();
+    if (props.won) {
+      startParticles();
+    }
     getCountDown();
     countDownInterval();
   }, []);
@@ -150,7 +152,7 @@ export default function WinAnimation() {
 
   return (
     <div class={styles.winHeader}>
-      <h1>🥳 Nice one 🥳</h1>
+      <h1>{props.won ? "🥳 Nice one 🥳" : "😢 Oh no 😢"}</h1>
       <h2>
         Todays color was <br />
         {/* make it copyable */}
@@ -182,7 +184,7 @@ export default function WinAnimation() {
       >
         {color()}
       </a>
-      <div class={styles.count_down}>Come back tomorrow for a new color</div>
+      <div class={styles.count_down}>Next color in:</div>
       <div class={styles.count_down}>{countDown()}</div>
     </div>
   );

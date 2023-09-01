@@ -15,6 +15,7 @@ export default function Game() {
   const [matches, setMatches] = createSignal<Result[][]>([] as Result[][]);
   const [animation, setAnimation] = createSignal<boolean>(false);
   const [won, setWon] = createSignal<boolean>(false);
+  const [lost, setLost] = createSignal<boolean>(false);
   const numberOfCells = 6;
   const inputRefs: InputRef[][] = Array.from(
     { length: amountOfGuesses },
@@ -29,9 +30,16 @@ export default function Game() {
     const currentRow = localStorage.getItem("currentRow");
     const matches = localStorage.getItem("matches");
     const hasWon = localStorage.getItem("won");
+    const hasLost = localStorage.getItem("lost");
 
     if (hasWon) {
       setWon(JSON.parse(hasWon));
+      return;
+    }
+
+    if (hasLost) {
+      setLost(JSON.parse(hasLost));
+      return;
     }
 
     if (guesses) {
@@ -131,6 +139,7 @@ export default function Game() {
       setMatches((prevMatches) => [...prevMatches, currentMatches]);
       setAnimation(true);
 
+      //WON
       if (currentMatches.every((match) => match.type === "correct")) {
         setTimeout(() => {
           setAnimation(false);
@@ -140,28 +149,45 @@ export default function Game() {
             setWon(true);
             localStorage.setItem("won", "true");
             resolve(); // Resolve the Promise when the animation is complete
-          }, 1000);
+          }, 600);
         }, 1000);
-      } else {
+      }
+      //LOST
+      else if (row === amountOfGuesses - 1) {
+        setTimeout(() => {
+          setAnimation(false);
+          setCurrentRow(amountOfGuesses);
+
+          setTimeout(() => {
+            setLost(true);
+            localStorage.setItem("lost", "true");
+            resolve(); // Resolve the Promise when the animation is complete
+          }, 600);
+        }, 1000);
+      }
+      //NEXT ROW
+      else {
         // If there's no animation to wait for, resolve immediately
         setTimeout(() => {
           setAnimation(false);
           resolve();
-        }, 500);
+        }, 1000);
       }
     });
   };
 
   return (
     <div class={styles.game}>
-      {won() && <WinAnimation />}
+      {won() || (lost() && <WinAnimation won={won()} />)}
       {!won() &&
+        !lost() &&
         Array.from({ length: amountOfGuesses }, (_, row) => (
           <div class={styles.row}>
             {Array.from({ length: numberOfCells }, (_, cell) => (
               <div class={styles.cell}>
                 <input
                   ref={(el) => (inputRefs[row][cell].current = el)}
+                  readOnly={animation()}
                   class={
                     currentRow() !== row
                       ? styles.cell_input +
@@ -169,7 +195,10 @@ export default function Game() {
                         styles[matches()?.at(row)?.at(cell)?.type ?? ""]
                       : styles.cell_input +
                         " " +
-                        (animation() && styles.animation)
+                        (animation() &&
+                          styles.animation +
+                            " " +
+                            styles[matches()?.at(row)?.at(cell)?.type ?? ""])
                   }
                   style={{ "animation-delay": `${cell * 100}ms` }}
                   value={
