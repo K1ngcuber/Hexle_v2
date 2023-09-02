@@ -88,6 +88,7 @@ const animate = (x: number, y: number, particle: HTMLElement, size: number) => {
 export default function WinAnimation(props: any) {
   const [color, setColor] = createSignal<string>(getColorOfTheDay());
   const [countDown, setCountDown] = createSignal<string>("");
+  const streak = localStorage.getItem("streak");
 
   createEffect(() => {
     if (props.won) {
@@ -184,8 +185,14 @@ export default function WinAnimation(props: any) {
       >
         {color()}
       </a>
-      <div class={styles.count_down}>Next color in:</div>
-      <div class={styles.count_down}>{countDown()}</div>
+      <div class={styles.streak}>
+        <span class={styles.streakCount}>Your streak: {streak}🔥</span>
+      </div>
+      <div class={styles.count_down}>
+        Next color in:
+        <br />
+        {countDown()}
+      </div>
     </div>
   );
 }

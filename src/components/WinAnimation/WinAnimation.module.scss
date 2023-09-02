@@ -9,7 +9,7 @@
   padding: 1rem;
 
   h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin: 0;
   }
 
@@ -30,7 +30,13 @@
     cursor: pointer;
   }
 }
-
+.count_down {
+  font-size: 2rem;
+}
+.streakCount {
+  font-size: 2rem;
+  margin-top: 2rem;
+}
 .tooltip {
   position: absolute;
   background-color: white;
@@ -63,5 +69,29 @@
 
   100% {
     opacity: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .winHeader {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: 400px) and (max-width: 900px) {
+  .winHeader {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
   }
 }

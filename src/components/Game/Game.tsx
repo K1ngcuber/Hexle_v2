@@ -148,6 +148,11 @@ export default function Game() {
           setTimeout(() => {
             setWon(true);
             localStorage.setItem("won", "true");
+            localStorage.setItem(
+              "streak",
+              (parseInt(localStorage.getItem("streak") ?? "0") + 1).toString()
+            );
+            localStorage.setItem("last_streak", new Date().toString());
             resolve(); // Resolve the Promise when the animation is complete
           }, 600);
         }, 1000);
@@ -161,6 +166,8 @@ export default function Game() {
           setTimeout(() => {
             setLost(true);
             localStorage.setItem("lost", "true");
+            localStorage.setItem("streak", "0");
+            localStorage.removeItem("last_streak");
             resolve(); // Resolve the Promise when the animation is complete
           }, 600);
         }, 1000);
@@ -187,7 +194,7 @@ export default function Game() {
               <div class={styles.cell}>
                 <input
                   ref={(el) => (inputRefs[row][cell].current = el)}
-                  readOnly={animation()}
+                  readOnly={animation() || currentRow() !== row}
                   class={
                     currentRow() !== row
                       ? styles.cell_input +

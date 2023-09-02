@@ -27,7 +27,8 @@ export default function Tutorial(props: any) {
             <div class={styles.step}>
               <h2 class={styles.stepTitle}>🔍 Clues</h2>
               <p class={styles.stepDescription}>
-                After you've entered your guess, we'll give you some hints:
+                After you've entered your guess the color you entered is shown
+                in the small dot after the input, we'll give you some hints:
               </p>
               <span>
                 <input
@@ -37,7 +38,7 @@ export default function Tutorial(props: any) {
                 />
                 - If it's correct! 🎉
               </span>
-              <br />
+
               <span>
                 <input
                   readonly
@@ -46,14 +47,14 @@ export default function Tutorial(props: any) {
                 />
                 - If it's included. 🤔
               </span>
-              <br />
+
               <span>
                 <input
                   readonly
                   value="C"
                   class={gameStyles.cell_input + " " + gameStyles.wrong}
                 />
-                - If it's off. 😅
+                - If it's not included. 😅
               </span>
               <br />
             </div>
@@ -69,7 +70,8 @@ export default function Tutorial(props: any) {
           )}
           {step() === 3 && (
             <div class={styles.step}>
-              <h2 class={styles.stepTitle}>🦦 I hope you have fun 🦦</h2>
+              <h2 class={styles.stepTitle}>🦦 Have fun</h2>
+              <br />
             </div>
           )}
         </div>

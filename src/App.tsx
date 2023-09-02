@@ -18,13 +18,34 @@ const App: Component = () => {
 
     const savedColor = localStorage.getItem("color");
     const dontShowTutorial = localStorage.getItem("dontShowTutorial");
+    const lastStreak = localStorage.getItem("lastStreak");
+
+    if (lastStreak) {
+      const lastStreakDate = new Date(parseInt(lastStreak));
+      const now = new Date();
+      const diff = now.getTime() - lastStreakDate.getTime();
+
+      if (diff > 1000 * 60 * 60 * 24) {
+        localStorage.removeItem("lastStreak");
+        localStorage.setItem("streak", "0");
+      }
+    }
 
     if (dontShowTutorial) {
       setShowTutorial(false);
     }
-
-    if (savedColor !== color()) {
+    if (!savedColor) {
+      localStorage.setItem("color", color());
+    } else if (savedColor !== color()) {
       //clear storage
+      localStorage.removeItem("guesses");
+      localStorage.removeItem("currentRow");
+      localStorage.removeItem("matches");
+      localStorage.removeItem("won");
+      localStorage.removeItem("lost");
+    }
+    if (!savedColor) {
+      localStorage.setItem("color", color());
     }
   }, []);
 
