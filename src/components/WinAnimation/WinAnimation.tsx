@@ -102,7 +102,7 @@ export default function WinAnimation(props: any) {
     setInterval(() => {
       getCountDown();
 
-      if (countDown() === "0:0:0") {
+      if (countDown() === "00:00") {
         //clear local storage
         localStorage.clear();
         //reload page
@@ -124,7 +124,7 @@ export default function WinAnimation(props: any) {
     const seconds = Math.floor((diff / 1000) % 60);
 
     setCountDown(
-      `${hours}:${minutes < 10 ? "0" + minutes : minutes}:${
+      `${hours > 0 ? hours+":" : ""}${minutes < 10 ? "0" + minutes : minutes}:${
         seconds < 10 ? "0" + seconds : seconds
       }`
     );
