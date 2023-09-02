@@ -34,9 +34,8 @@ const App: Component = () => {
     if (dontShowTutorial) {
       setShowTutorial(false);
     }
-    if (!savedColor) {
-      localStorage.setItem("color", color());
-    } else if (savedColor !== color()) {
+    
+    if (savedColor !== color()) {
       //clear storage
       localStorage.removeItem("guesses");
       localStorage.removeItem("currentRow");
@@ -44,9 +43,8 @@ const App: Component = () => {
       localStorage.removeItem("won");
       localStorage.removeItem("lost");
     }
-    if (!savedColor) {
-      localStorage.setItem("color", color());
-    }
+    
+    localStorage.setItem("color", color());
   }, []);
 
   return (
