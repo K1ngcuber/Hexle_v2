@@ -19,7 +19,7 @@ jobs:
           npm run build
 
       - name: Copy to Server
-        uses: appleboy/scp-action@v0.3.1
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SSH_USERNAME }}
