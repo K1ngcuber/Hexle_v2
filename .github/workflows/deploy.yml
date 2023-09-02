@@ -19,6 +19,5 @@ jobs:
           npm run build
 
       - name: Copy to Server
-        with:
-          command: scp -r -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ./dist/* ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SSH_PATH }}
-          working-directory: ./
+        run: |
+          scp -r -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ./dist/* ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SSH_PATH }}
