@@ -18,6 +18,11 @@ jobs:
           npm install
           npm run build
 
-      - name: Copy to Server
-        run: |
-          scp -r -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ./dist/* ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SSH_PATH }}
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: dist/
+          target: /var/www/hexle/
