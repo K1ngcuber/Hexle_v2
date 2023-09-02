@@ -25,4 +25,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "dist/index.html,dist/assets"
+          strip_components: 1
           target: /var/www/hexle/
