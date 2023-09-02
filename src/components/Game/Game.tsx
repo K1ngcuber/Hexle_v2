@@ -146,13 +146,14 @@ export default function Game() {
           setCurrentRow(amountOfGuesses);
 
           setTimeout(() => {
-            setWon(true);
             localStorage.setItem("won", "true");
             localStorage.setItem(
               "streak",
               (parseInt(localStorage.getItem("streak") ?? "0") + 1).toString()
             );
             localStorage.setItem("last_streak", new Date().toString());
+            setWon(true);
+
             resolve(); // Resolve the Promise when the animation is complete
           }, 600);
         }, 1000);
