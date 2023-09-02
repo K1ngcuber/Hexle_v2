@@ -14,6 +14,27 @@ export const getColorOfTheDay = (): string => {
   return color;
 };
 
+export const getFontColorForBackground = (backgroundColor: string) => {
+  // Convert the background color to RGB format
+  const hexToRgb = (hex: any) =>
+    hex
+      .replace(
+        /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
+        (m: any, r: any, g: any, b: any) => `#${r}${r}${g}${g}${b}${b}`
+      )
+      .substring(1)
+      .match(/.{2}/g)
+      .map((x: any) => parseInt(x, 16));
+
+  const [r, g, b] = hexToRgb(backgroundColor);
+
+  // Calculate the relative luminance of the background color
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+  // Determine the font color based on the luminance
+  return luminance > 0.5 ? "black" : "white";
+};
+
 export type Result = {
   type: "correct" | "included" | "wrong";
   index: number;

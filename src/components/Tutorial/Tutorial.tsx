@@ -1,6 +1,8 @@
-import { createEffect, createSignal } from "solid-js";
+import { createSignal } from "solid-js";
 import styles from "./Tutorial.module.scss";
 import gameStyles from "../Game/Game.module.scss";
+import winStyles from "../WinAnimation/WinAnimation.module.scss";
+import { getFontColorForBackground } from "../../utils";
 
 export default function Tutorial(props: any) {
   const [step, setStep] = createSignal<number>(0);
@@ -20,6 +22,13 @@ export default function Tutorial(props: any) {
               <p class={styles.stepDescription}>
                 The color you see in the background is the color of the day.
                 Take your best guess! 🤔
+              </p>
+              <p>
+                Fun Fact: Colors on the web have secret codes called 'hex
+                codes', like #16b8f3. These codes are made up of numbers 0-9 and
+                letters A-F. The first two numbers represent the amount of red,
+                the second two the amount of green and the last two the amount
+                of blue.
               </p>
             </div>
           )}
