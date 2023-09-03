@@ -1,34 +1,38 @@
-## Usage
+# 🎨 HEXLE
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+Welcome to Hexle, where every day, you'll be tested on your color knowledge by guessing the correct hex color code! 🧐
+To start playing Hexle 🎨, visit the [Hexle Website](https://hexle.otters.one/).
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## 🌟 Features
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+- ✨ **Daily Color Guessing:** Challenge yourself daily by guessing the mysterious hex color of the day. 🎨 Can you crack the code?
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+- ✨ **Streaks:** Keep your guessing streak alive! The longer you guess correctly, the hotter your streak gets. 🔥 How high can you go without missing a color?
 
-## Available Scripts
+# Hexle 🎨 Tutorial
 
-In the project directory, you can run:
+Welcome to the Hexle tutorial! Learn how to play this colorful game step by step.
 
-### `npm run dev` or `npm start`
+## 🎯 Guess the Color
+The color you see in the background is the color of the day. Take your best guess! 🤔
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Fun Fact: Colors on the web have secret codes called 'hex codes', like #16b8f3. These codes are made up of numbers 0-9 and letters A-F. The first two numbers represent the amount of red, the second two the amount of green, and the last two the amount of blue.
 
-The page will reload if you make edits.<br>
+## 🔍 Clues
+After you've entered your guess, the color you entered is shown in the small dot after the input, and we'll give you some hints:
 
-### `npm run build`
+- If it's correct! 🎉
+- If it's included. 🤔
+- If it's not included. 😅
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+## 🔄 Keep Guessing
+No giving up! Keep guessing until you find the color of the day. 🌟
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## 🦦 Have Fun
+Enjoy the colorful journey! 🌈
 
-## Deployment
+---
 
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+**Note:** This tutorial is also available in the Hexle game itself. To start playing, follow the instructions in the game.
+
+Have a colorful day and enjoy Hexle! 🎉
