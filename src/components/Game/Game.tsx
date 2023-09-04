@@ -111,7 +111,7 @@ export default function Game() {
         prevColor.slice(cell + 1)
     );
 
-    if (cell === numberOfCells - 1) {
+    if (cell === numberOfCells - 1 && currentColor().length === 6) {
       setGuesses((prevGuesses) => [...prevGuesses, currentColor()]);
       await startAnimation(row);
       setCurrentColor("");
