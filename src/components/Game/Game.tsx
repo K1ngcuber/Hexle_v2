@@ -195,7 +195,7 @@ export default function Game() {
               <div class={styles.cell}>
                 <input
                   ref={(el) => (inputRefs[row][cell].current = el)}
-                  readOnly={animation() || currentRow() !== row}
+                  readOnly={animation() || currentRow() !== row || cell <= currentColor().length}
                   class={
                     currentRow() !== row
                       ? styles.cell_input +
